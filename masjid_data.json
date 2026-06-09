@@ -1,0 +1,234 @@
+{
+  "Prayer Timings": [
+    {
+      "Week Start": "2026-06-08",
+      "Day": "Monday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:35 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-09",
+      "Day": "Tuesday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:35 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-10",
+      "Day": "Wednesday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:36 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-11",
+      "Day": "Thursday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:36 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-12",
+      "Day": "Friday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:36 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-13",
+      "Day": "Saturday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:36 PM",
+      "Isha": "8:15 PM"
+    },
+    {
+      "Week Start": "2026-06-14",
+      "Day": "Sunday",
+      "Fajr": "5:00 AM",
+      "Dhuhr": "1:00 PM",
+      "Asr": "4:15 PM",
+      "Maghrib": "6:36 PM",
+      "Isha": "8:15 PM"
+    }
+  ],
+  "Jumuah Katheeb": [
+    {
+      "Date": "2026-05-06",
+      "Name of the Khateeb": "Sheikh Dhiya",
+      "Status": "Completed Alhamdulillah"
+    },
+    {
+      "Date": "2026-12-06",
+      "Name of the Khateeb": "Sheikh Abdur Rahman",
+      "Status": "Planned"
+    },
+    {
+      "Date": "19-06-2026",
+      "Name of the Khateeb": "Sheikh Riyaz Baqavi",
+      "Status": "Planned"
+    },
+    {
+      "Date": "26-06-2026",
+      "Name of the Khateeb": "Sheikh Ghouse Khan",
+      "About Khateeb": "Umari",
+      "Status": "Planned"
+    },
+    {
+      "Date": "2026-03-07",
+      "Status": ""
+    },
+    {
+      "Date": "2026-10-07",
+      "Status": ""
+    },
+    {
+      "Date": "17-07-2026",
+      "Name of the Khateeb": "Sheikh Aashiqh ",
+      "About Khateeb": "Madani, Asphire College lecturer",
+      "Status": "Planned"
+    },
+    {
+      "Date": "24-07-2026",
+      "Status": ""
+    },
+    {
+      "Date": "31-07-2026",
+      "Status": ""
+    }
+  ],
+  "Weekly Programs": [
+    {
+      "Day": "Saturday",
+      "Time": "Magrib to Isha",
+      "Location": "Main Hall (G + 1)",
+      "Program Title": "Weekly Quran Tafseer",
+      "Lecturer": "Sheikh Riyaz Baqavi",
+      "Duration": "1 hour",
+      "Audiance": "Men & Women"
+    },
+    {
+      "Day": "Wednesday",
+      "Time": "10:30 AM to 12:00 PM",
+      "Location": "First Floor",
+      "Program Title": "Ladies Tajweed Class",
+      "Lecturer": "Sister Sumayya",
+      "Duration": "1.5 hours",
+      "Audiance": "Only Women"
+    },
+    {
+      "Day": "Sunday",
+      "Time": "10:00 AM to 1:00 PM",
+      "Location": "G + 1 Classrooms",
+      "Program Title": "Sunday Islamic School for Kids",
+      "Lecturer": "Multiple Teachers",
+      "Duration": "3 hours",
+      "Audiance": "Children (Boys & Girls)"
+    }
+  ],
+  "Monthly Programs": [
+    {
+      "Schedule": "1st Sunday of every month",
+      "Time": "After Asr",
+      "Location": "Main Hall",
+      "Program Title": "Monthly Youth Halaqah",
+      "Lecturer": "Various Guest Speakers",
+      "Duration": "1.5 hours",
+      "Audiance": "Youth"
+    },
+    {
+      "Schedule": "Last Saturday of every month",
+      "Time": "Isha to 10:00 PM",
+      "Location": "Masjid Main Lawn",
+      "Program Title": "Family Get-Together & Lecture",
+      "Lecturer": "Invited Scholars",
+      "Duration": "1.5 hours",
+      "Audiance": "Families (All Welcome)"
+    }
+  ],
+  "Upcoming Events": [
+    {
+      "Date": "2026-06-14",
+      "Time": "After Isha (8:30 PM)",
+      "Location": "Main Hall",
+      "Program Title": "Preparation for Dhul Hijjah & Udhiyah",
+      "Lecturer": "Sheikh Ghouse Khan Umari",
+      "Duration": "1.5 hours",
+      "Audiance": "Men & Women"
+    },
+    {
+      "Date": "2026-06-21",
+      "Time": "After Maghrib (6:40 PM)",
+      "Location": "First Floor",
+      "Program Title": "Parenting in the Light of Sunnah",
+      "Lecturer": "Sheikh Aashiqh Madani",
+      "Duration": "1.5 hours",
+      "Audiance": "Men & Women"
+    }
+  ],
+  "Past program history": [
+    {
+      "Date": "2026-05-15",
+      "Program Title": "Ramadan Preparation Seminar",
+      "Lecturer": "Sheikh Ghouse Khan",
+      "Attendance": "250",
+      "Comments": "Very engaging, Q&A session went long"
+    },
+    {
+      "Date": "2026-05-24",
+      "Program Title": "EID Milan Community Dinner",
+      "Lecturer": "Masjid Committee",
+      "Attendance": "500",
+      "Comments": "Eid celebration dinner for families"
+    },
+    {
+      "Date": "2026-04-18",
+      "Program Title": "Parenting in Islam Workshop",
+      "Lecturer": "Sheikh Aashiqh Madani",
+      "Attendance": "120",
+      "Comments": "Focus on raising kids in the modern era"
+    },
+    {
+      "Date": "2026-04-01",
+      "Program Title": "Basic Arabic Grammar Short Course",
+      "Lecturer": "Ustadh Abdur Rahman",
+      "Attendance": "45",
+      "Comments": "4-week crash course, certificates distributed"
+    }
+  ],
+  "Reports": [
+    {
+      "Category": "Finance",
+      "Date": "2026-06-01",
+      "Title": "Monthly Financial Statement - May 2026",
+      "Summary": "Total Collections: ₹4,50,000, Total Expenses: ₹3,80,000. Surplus: ₹70,000. Construction fund updated.",
+      "Link": "#"
+    },
+    {
+      "Category": "Project",
+      "Date": "2026-05-10",
+      "Title": "Masjid Renovation Progress Report",
+      "Summary": "Second floor roofing completed. Painting started. Estimated completion: August 2026.",
+      "Link": "#"
+    },
+    {
+      "Category": "Charity",
+      "Date": "2026-05-28",
+      "Title": "Community Welfare Distribution Report",
+      "Summary": "Ration kits distributed to 150 needy families in local area. Total expenditure: ₹1,50,000.",
+      "Link": "#"
+    }
+  ]
+}

@@ -1,0 +1,450 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Masjid-e-Ibrahim | Public Community Dashboard</title>
+  <!-- Google Fonts: Outfit (modern sans-serif) and Amiri (classic Arabic serif) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:ital,wght@0,400;0,700;1,400;1,700&family=Outfit:wght@100..900&display=swap" rel="stylesheet">
+  <!-- FontAwesome Icons for professional illustrations -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Vanilla CSS Stylesheet -->
+  <link rel="stylesheet" href="index.css">
+</head>
+<body>
+
+  <!-- Top Announcement Banner -->
+  <div class="announcement-banner" id="announcementBanner">
+    <div class="banner-content">
+      <span class="badge">Notice</span>
+      <span class="banner-text">Welcome to Masjid-e-Ibrahim Pammal Public Dashboard. Connect your Google Sheet to view live updates!</span>
+    </div>
+    <button class="close-banner" onclick="document.getElementById('announcementBanner').style.display='none'"><i class="fa-solid fa-xmark"></i></button>
+  </div>
+
+  <div class="container">
+    
+    <!-- Header Section -->
+    <header class="app-header">
+      <div class="header-main">
+        <div class="logo-area">
+          <!-- Elegant vector mosque logo -->
+          <svg class="mosque-logo" viewBox="0 0 100 100" width="60" height="60">
+            <path d="M50,15 C52,25 48,30 40,35 C40,40 45,43 50,43 C55,43 60,40 60,35 C52,30 48,25 50,15 Z" fill="#b45309" />
+            <path d="M25,50 C25,35 35,30 50,30 C65,30 75,35 75,50 L75,85 L25,85 Z" fill="#064e3b" />
+            <path d="M48,15 L52,15 L52,5 L48,5 Z" fill="#b45309" />
+            <circle cx="50" cy="3" r="2.5" fill="#b45309" />
+            <!-- Minarets -->
+            <path d="M15,85 L20,85 L20,40 L15,40 Z" fill="#043e2f" />
+            <path d="M13,40 L22,40 L17,32 Z" fill="#b45309" />
+            <path d="M80,85 L85,85 L85,40 L80,40 Z" fill="#043e2f" />
+            <path d="M78,40 L87,40 L82,32 Z" fill="#b45309" />
+            <!-- Doorway -->
+            <path d="M42,85 C42,70 58,70 58,85 Z" fill="#fdfbf7" opacity="0.9" />
+          </svg>
+          <div class="title-details">
+            <h1>مسجد إبراهيم</h1>
+            <h2>Masjid-e-Ibrahim</h2>
+            <p class="subtitle">Pammal, Chennai | Public Community Dashboard</p>
+          </div>
+        </div>
+        
+        <div class="clock-calendar-area">
+          <div class="time-card">
+            <span class="live-clock" id="liveClock">00:00:00 AM</span>
+            <span class="clock-label">Local Time</span>
+          </div>
+          <div class="calendar-card">
+            <span class="gregorian-date" id="gregorianDate">Tuesday, June 9, 2026</span>
+            <span class="hijri-date" id="hijriDate">24 Dhul-Qadah 1447 AH</span>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Top Action bar (Search & Settings) -->
+      <div class="header-actions">
+        <div class="connection-status" id="connectionStatus">
+          <span class="status-dot green animate-pulse"></span>
+          <span class="status-text">Loading Data...</span>
+        </div>
+        <div class="action-buttons">
+          <button class="btn btn-secondary btn-icon" id="syncNowBtn" title="Sync now with Google Sheets">
+            <i class="fa-solid fa-arrows-rotate"></i> Sync Now
+          </button>
+          <button class="btn btn-primary btn-icon" id="openSettingsBtn" title="Configure Google Sheets integration">
+            <i class="fa-solid fa-gear"></i> Settings
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <!-- Quick Stats Cards Section -->
+    <section class="stats-grid">
+      
+      <!-- Next Prayer Timer Card (High Priority) -->
+      <div class="stat-card prayer-countdown-card">
+        <div class="card-bg-pattern"></div>
+        <div class="card-inner">
+          <div class="countdown-header">
+            <span class="tag gold-tag animate-pulse">Next Prayer</span>
+            <span class="time-remaining" id="countdownTimer">--:--:--</span>
+          </div>
+          <h3 id="nextPrayerName">Calculating...</h3>
+          <div class="progress-bar-container">
+            <div class="progress-bar" id="prayerProgressBar" style="width: 0%"></div>
+          </div>
+          <p class="prayer-subtext" id="prayerSubtext">Loading timings...</p>
+        </div>
+      </div>
+
+      <!-- Stats Card 2: Weekly Classes -->
+      <div class="stat-card">
+        <div class="stat-icon-wrapper emerald"><i class="fa-solid fa-book-open"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="statsWeeklyCount">3</span>
+          <span class="stat-label">Weekly Programs</span>
+          <p class="stat-sub">Active educational lectures</p>
+        </div>
+      </div>
+
+      <!-- Stats Card 3: Jumuah Sermons -->
+      <div class="stat-card">
+        <div class="stat-icon-wrapper gold"><i class="fa-solid fa-microphone"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="statsJumuahStatus">Planned</span>
+          <span class="stat-label" id="statsJumuahKhateeb">Sheikh Riyaz Baqavi</span>
+          <p class="stat-sub" id="statsJumuahDate">This Friday: Jun 12</p>
+        </div>
+      </div>
+
+      <!-- Stats Card 4: Upcoming Events -->
+      <div class="stat-card">
+        <div class="stat-icon-wrapper info"><i class="fa-solid fa-calendar-days"></i></div>
+        <div class="stat-content">
+          <span class="stat-value" id="statsEventsCount">2</span>
+          <span class="stat-label">Upcoming Events</span>
+          <p class="stat-sub">Special monthly lectures</p>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- Navigation Tabs Section -->
+    <nav class="navigation-tabs">
+      <button class="tab-btn active" data-tab="prayer-timings">
+        <i class="fa-solid fa-clock"></i> Prayer Timings
+      </button>
+      <button class="tab-btn" data-tab="weekly-programs">
+        <i class="fa-solid fa-calendar-week"></i> Weekly Programs
+      </button>
+      <button class="tab-btn" data-tab="upcoming-events">
+        <i class="fa-solid fa-star"></i> Upcoming Events
+      </button>
+      <button class="tab-btn" data-tab="past-history">
+        <i class="fa-solid fa-history"></i> Past History
+      </button>
+      <button class="tab-btn" data-tab="reports">
+        <i class="fa-solid fa-file-invoice-dollar"></i> Reports
+      </button>
+    </nav>
+
+    <!-- Main Dynamic Content Container -->
+    <main class="dashboard-content">
+      
+      <!-- Section 1: Prayer Timings -->
+      <section class="tab-content active" id="prayer-timings-tab">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h3><i class="fa-solid fa-clock-o gold-text"></i> Daily Prayer & Iqamah Timings</h3>
+            <p>High-precision prayer times. Timings update automatically each week.</p>
+          </div>
+          <div class="section-actions">
+            <span class="info-badge"><i class="fa-solid fa-info-circle"></i> Timings are set for 2026-06-08 to 2026-06-14</span>
+          </div>
+        </div>
+        
+        <div class="prayer-timings-layout">
+          <!-- Left: Big clock and today's status -->
+          <div class="today-prayer-summary">
+            <div class="today-header">
+              <span class="day-label" id="todayDayName">TUESDAY</span>
+              <span class="date-label" id="todayDateStr">June 9, 2026</span>
+            </div>
+            <div class="today-active-box">
+              <p class="active-label">CURRENT PRAYER TIME</p>
+              <h2 id="todayCurrentPrayerName">Dhuhr</h2>
+              <div class="active-time" id="todayCurrentPrayerTime">1:00 PM</div>
+              <p class="active-iqamah-desc">Iqamah is performed exactly at the stated timing.</p>
+            </div>
+            <div class="active-quote">
+              <p class="arabic-text">"إن الصلاة كانت على المؤمنين كتاباً موقوتاً"</p>
+              <p class="quote-translation">"Indeed, prayer has been decreed upon the believers a decree of specified times." (Surah An-Nisa 4:103)</p>
+            </div>
+          </div>
+          
+          <!-- Right: Weekly table -->
+          <div class="weekly-prayer-table-container">
+            <table class="prayer-table" id="prayerTable">
+              <thead>
+                <tr>
+                  <th>Day</th>
+                  <th>Date</th>
+                  <th>Fajr</th>
+                  <th>Dhuhr</th>
+                  <th>Asr</th>
+                  <th>Maghrib</th>
+                  <th>Isha</th>
+                </tr>
+              </thead>
+              <tbody id="prayerTableBody">
+                <!-- Row data generated dynamically in JS -->
+                <tr><td colspan="7" class="loading-placeholder"><i class="fa-solid fa-spinner animate-spin"></i> Loading weekly timings...</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2: Jumuah & Weekly Programs -->
+      <section class="tab-content" id="weekly-programs-tab">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h3><i class="fa-solid fa-calendar-week gold-text"></i> Jumuah Khateeb Schedule & Weekly Programs</h3>
+            <p>Our weekly congregation lists and regular educational classes for the community.</p>
+          </div>
+        </div>
+
+        <div class="weekly-programs-layout">
+          <!-- Jumuah Sermons Panel -->
+          <div class="jumuah-schedule-card">
+            <div class="card-header-accented">
+              <h4><i class="fa-solid fa-microphone"></i> Jumuah Khutbah Sermons</h4>
+              <span class="pill">Weekly Friday</span>
+            </div>
+            <div class="jumuah-timeline" id="jumuahList">
+              <!-- Rendered dynamically -->
+              <p class="loading-placeholder">Loading Jumuah schedule...</p>
+            </div>
+          </div>
+
+          <!-- Weekly Educational Lectures -->
+          <div class="weekly-lectures-container">
+            <div class="card-header-accented">
+              <h4><i class="fa-solid fa-book-open"></i> Regular Weekly Classes</h4>
+              <span class="pill">Educational</span>
+            </div>
+            <div class="weekly-classes-grid" id="weeklyClassesList">
+              <!-- Rendered dynamically -->
+              <p class="loading-placeholder">Loading weekly lectures...</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3: Upcoming Events -->
+      <section class="tab-content" id="upcoming-events-tab">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h3><i class="fa-solid fa-star gold-text"></i> Special Upcoming Events & Monthly Programs</h3>
+            <p>Special workshops, seminars, and monthly community gatherings. Mark your calendar!</p>
+          </div>
+        </div>
+        
+        <!-- Tab Sub-Navigation for Events vs Monthly Programs -->
+        <div class="sub-nav-tabs">
+          <button class="sub-tab-btn active" data-subtab="events-list">Special Events</button>
+          <button class="sub-tab-btn" data-subtab="monthly-list">Monthly Recurring Programs</button>
+        </div>
+
+        <div class="sub-tab-content active" id="events-list-subtab">
+          <div class="events-grid" id="upcomingEventsList">
+            <!-- Rendered dynamically -->
+            <p class="loading-placeholder">Loading upcoming events...</p>
+          </div>
+        </div>
+
+        <div class="sub-tab-content" id="monthly-list-subtab">
+          <div class="events-grid" id="monthlyProgramsList">
+            <!-- Rendered dynamically -->
+            <p class="loading-placeholder">Loading monthly programs...</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4: Past Program History -->
+      <section class="tab-content" id="past-history-tab">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h3><i class="fa-solid fa-history gold-text"></i> Past Program History</h3>
+            <p>Archive of completed educational lectures and social campaigns. Search and filter records.</p>
+          </div>
+        </div>
+
+        <!-- Search, Filter, and Export Bar -->
+        <div class="search-filter-bar">
+          <div class="search-input-wrapper">
+            <i class="fa-solid fa-magnifying-glass search-icon"></i>
+            <input type="text" id="pastSearchInput" placeholder="Search by title, lecturer, comments...">
+          </div>
+          <div class="filter-controls">
+            <select id="pastLecturerFilter">
+              <option value="">All Lecturers</option>
+              <!-- Populated dynamically -->
+            </select>
+            <button class="btn btn-secondary btn-icon" id="downloadCsvBtn" title="Download filtered history as CSV">
+              <i class="fa-solid fa-file-csv"></i> Export CSV
+            </button>
+          </div>
+        </div>
+
+        <!-- Table containing search results -->
+        <div class="past-table-container">
+          <table class="past-table" id="pastTable">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Program Title</th>
+                <th>Lecturer</th>
+                <th>Attendance</th>
+                <th>Comments / Notes</th>
+              </tr>
+            </thead>
+            <tbody id="pastTableBody">
+              <!-- Rendered dynamically -->
+              <tr><td colspan="5" class="loading-placeholder"><i class="fa-solid fa-spinner animate-spin"></i> Loading past programs...</td></tr>
+            </tbody>
+          </table>
+        </div>
+        
+        <!-- Pagination controls -->
+        <div class="pagination-container">
+          <span class="pagination-info" id="paginationInfo">Showing 0 of 0 entries</span>
+          <div class="pagination-buttons">
+            <button class="btn btn-secondary btn-sm" id="prevPageBtn" disabled><i class="fa-solid fa-chevron-left"></i> Previous</button>
+            <button class="btn btn-secondary btn-sm" id="nextPageBtn" disabled>Next <i class="fa-solid fa-chevron-right"></i></button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 5: Reports -->
+      <section class="tab-content" id="reports-tab">
+        <div class="section-header">
+          <div class="section-title-group">
+            <h3><i class="fa-solid fa-file-invoice-dollar gold-text"></i> Financial Reports & Transparency Documents</h3>
+            <p>Official publications, monthly balances, renovation progress updates, and charitable distribution audits.</p>
+          </div>
+        </div>
+
+        <div class="reports-grid" id="reportsList">
+          <!-- Rendered dynamically -->
+          <p class="loading-placeholder">Loading reports...</p>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- Footer Section -->
+    <footer class="app-footer">
+      <div class="footer-grid">
+        <div class="footer-about">
+          <h4>Masjid-e-Ibrahim</h4>
+          <p>Serving the spiritual and educational needs of the Muslim community in Pammal, Chennai. Open for all 5 daily prayers and community services.</p>
+          <div class="social-links">
+            <a href="#" class="social-icon"><i class="fa-brands fa-whatsapp"></i></a>
+            <a href="#" class="social-icon"><i class="fa-brands fa-youtube"></i></a>
+            <a href="#" class="social-icon"><i class="fa-solid fa-envelope"></i></a>
+            <a href="#" class="social-icon"><i class="fa-solid fa-map-location-dot"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-links">
+          <h4>Navigation</h4>
+          <ul>
+            <li><a href="#" onclick="switchTab('prayer-timings'); return false;">Prayer Timings</a></li>
+            <li><a href="#" onclick="switchTab('weekly-programs'); return false;">Jumuah Schedule</a></li>
+            <li><a href="#" onclick="switchTab('upcoming-events'); return false;">Upcoming Events</a></li>
+            <li><a href="#" onclick="switchTab('past-history'); return false;">Past Archives</a></li>
+            <li><a href="#" onclick="switchTab('reports'); return false;">Reports & Audits</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-contact">
+          <h4>Masjid Details</h4>
+          <p><i class="fa-solid fa-location-dot"></i> Anna Salai, Pammal, Chennai, Tamil Nadu - 600075</p>
+          <p><i class="fa-solid fa-phone"></i> +91 44 2248 XXXX</p>
+          <p><i class="fa-solid fa-info-circle"></i> Registered Islamic Trust No: XXX/XXXX</p>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>&copy; 2026 Masjid-e-Ibrahim Pammal. All Rights Reserved. Designed with absolute precision.</p>
+        <p class="data-source-footer" id="dataSourceFooter">Data Source: Local database (Offline Fallback)</p>
+      </div>
+    </footer>
+
+  </div>
+
+  <!-- Google Sheets Integration Settings Modal -->
+  <div class="modal-backdrop" id="settingsModal">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3><i class="fa-solid fa-gear"></i> Google Sheets Sync Settings</h3>
+        <button class="close-modal-btn" id="closeSettingsBtnX"><i class="fa-solid fa-xmark"></i></button>
+      </div>
+      <div class="modal-body">
+        
+        <div class="form-group">
+          <label for="spreadsheetIdInput">Google Spreadsheet ID or URL</label>
+          <input type="text" id="spreadsheetIdInput" placeholder="e.g. 1a2b3c4d5e6f7g8h9i0j...">
+          <small class="form-help">Enter either the full Google Sheets browser URL or just the long alphanumeric ID from the URL.</small>
+        </div>
+
+        <div class="form-row">
+          <div class="form-group">
+            <label for="autoRefreshSelect">Auto Refresh Interval</label>
+            <select id="autoRefreshSelect">
+              <option value="0">Off (Manual Sync Only)</option>
+              <option value="60000">Every 1 Minute</option>
+              <option value="300000" selected>Every 5 Minutes</option>
+              <option value="600000">Every 10 Minutes</option>
+            </select>
+          </div>
+          <div class="form-group flex-align-end">
+            <button class="btn btn-secondary w-100" id="resetDefaultBtn">
+              <i class="fa-solid fa-undo"></i> Reset to Default
+            </button>
+          </div>
+        </div>
+
+        <div class="instructions-panel">
+          <h4><i class="fa-solid fa-circle-info"></i> How to connect your Google Sheet:</h4>
+          <ol>
+            <li>Open your Google Sheet containing the dashboard data.</li>
+            <li>Ensure the sheets are named exactly: <strong>"Prayer Timings"</strong>, <strong>"Jumuah Katheeb"</strong>, <strong>"Weekly Programs"</strong>, <strong>"Monthly Programs"</strong>, <strong>"Upcoming Events"</strong>, <strong>"Past program history"</strong>, and <strong>"Reports"</strong>.</li>
+            <li>Click <strong>Share</strong> in the top-right corner of Google Sheets.</li>
+            <li>Under General Access, change "Restricted" to <strong>"Anyone with the link can view"</strong> (Viewer permission is enough!).</li>
+            <li>Copy the sheet URL and paste it into the field above.</li>
+            <li>Click <strong>Save & Connect</strong>. The dashboard will automatically pull and render the sheet data!</li>
+          </ol>
+        </div>
+
+        <div class="sync-diagnostic-log" id="syncDiagnosticLog">
+          <span class="diagnostic-title">Diagnostic Log:</span>
+          <div class="log-output" id="diagnosticOutput">No diagnostic data. Enter sheet ID and click save.</div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" id="cancelSettingsBtn">Cancel</button>
+        <button class="btn btn-primary btn-icon" id="saveSettingsBtn">
+          <i class="fa-solid fa-save"></i> Save & Connect
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Vanilla JavaScript App Logic -->
+  <script src="app.js"></script>
+</body>
+</html>
